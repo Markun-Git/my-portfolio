@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+	background-image: url(img/background02.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}

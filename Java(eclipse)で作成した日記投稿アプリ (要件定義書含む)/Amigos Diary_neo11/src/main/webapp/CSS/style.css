@@ -1,0 +1,299 @@
+@charset "UTF-8";
+
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 20px;
+  background-color:lemonchiffon; 
+}
+
+h1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #007bff;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table tr {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+table tr:hover {
+  background-color: #e6f7ff !important;  /* 薄い水色でハイライト */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);  /* 青みの影 */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+th {
+  background-color: rgb(255, 128, 192);
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+a:hover {
+  background-color: rgb(0, 123, 255);
+  color: #fff;
+}
+
+/* 投稿者名のボタンの基本スタイル */
+.poster-button {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none; /* 下線を削除 */
+    border-radius: 5px; /* 角を丸くする */
+    cursor: pointer; /* カーソルをポインターにする */
+    font-size: 0.9em; /* フォントサイズを調整 */
+    text-align: center; /* テキストを中央揃え */
+    min-width: 60px; /* 必要に応じて調整 */
+}
+
+/* ログインユーザーの投稿者名ボタンのスタイル */
+a.poster-button.current-user {
+    background-color: #8A2BE2; /* 紫色 */
+    color: #fff; /* 文字色を白に */
+    border-color: #6A1EB2; /* 枠線の色を濃い紫に */
+    font-weight: bold; /* フォントを太字に */
+}
+
+/* ページネーションのスタイル */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #fff;
+}
+.pagination a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.pagination span.current-page {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #0056b3;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #0056b3;
+    color: #fff;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* 投稿者名のボタンの基本スタイル */
+.poster-button {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-align: center;
+    min-width: 60px;
+}
+
+/* ログインユーザーの投稿者名ボタンのスタイル (a.poster-button.current-userで) */
+a.poster-button.current-user {
+    background-color: #8A2BE2; /* 紫色 */
+    color: #fff;
+    border-color: #6A1EB2;
+    font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* ← 半透明の白 */
+  z-index: 0; /* 背面に配置 */
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* 前面に配置して操作・表示可能にする */
+  padding: 20px;
+  color: #333; /* 文字が背景に埋もれないように濃くする */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.diary-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+textarea, input[type="text"], input[type="password"] {
+  /* width: 100%; */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ボタンの基本スタイル（aタグのボタンと似たようにする） */
+button[type="submit"], button[type="button"] {
+    display: inline-block;
+    margin-top: 10px;
+    color: #fff; /* ボタンの文字色 */
+    background-color: #007bff; /* ボタンの背景色 */
+    border: 1px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* aタグの場合のみ */
+}
+
+button[type="submit"]:hover, button[type="button"]:hover {
+    background-color: rgb(0, 123, 255);
+    color: #fff;
+}
+
+.flash-effect {
+  animation: flash 1.5s ease-in-out;
+}
+
+@keyframes flash {
+  0%   { background-color: #ffffff; }
+  50%  { background-color: #c8e6c9; } /* 淡い緑 */
+  100% { background-color: transparent; }
+}
+
+.star-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* ユーザー操作に影響しない */
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.star {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  animation: fall 2.5s linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    /* translateY(-10vh) から、もう少し上にも開始位置を広げる */
+    transform: translateY(calc(-10vh - (var(--random-top, 0) * 5vh))); /* --random-topはJSで設定 */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.logout-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #ff9a9e,
+    #fad0c4,
+    #fbc2eb,
+    #a1c4fd,
+    #c2e9fb,
+    #d4fc79,
+    #96e6a1,
+    #ff9a9e
+  );
+  animation: spin 6s linear infinite, fadeOut 3s ease-out 2s forwards;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
