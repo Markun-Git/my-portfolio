@@ -1,0 +1,590 @@
+@charset "UTF-8";
+
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 20px;
+  background-color:lemonchiffon; 
+}
+
+h1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #007bff;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+table {
+  border-collapse: separate; /* border-spacing を使うために separate に */
+  border-spacing: 0 8px; /* 行間のスペース */
+  width: 680px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* テーブル背景も半透明に */
+  border-radius: 15px; /* テーブル全体も角を丸く */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* 影 */
+}
+
+table tr {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+table tr:hover {
+  background-color: #e6f7ff !important;  /* 薄い水色でハイライト */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);  /* 青みの影 */
+}
+
+th, td {
+  border: none; /* デフォルトの罫線をなくす */
+  padding: 15px 20px; /* パディングを増やす */
+  /* border-radius: 6px; は各セルごとではなく行に適用 */
+}
+th {
+  background-color: #ff80c0; /* より鮮やかなピンク */
+  color: #fff; /* 文字色を白に */
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: left; /* ヘッダーテキストを左寄せ */
+  padding: 18px 20px; /* ヘッダーのパディングをさらに増やす */
+}
+
+/* テーブルヘッダーの角を丸くする (最初のセルと最後のセル) */
+th:first-child {
+    border-top-left-radius: 15px;
+}
+th:last-child {
+    border-top-right-radius: 15px;
+}
+
+tr {
+  background-color: #ffffff; /* 行のデフォルト背景色 */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px; /* 行自体を丸く */
+  overflow: hidden; /* 角丸からはみ出ないように */
+}
+
+tr:nth-child(even) {
+  background-color: #f8f8f8; /* 偶数行の背景色をより淡く */
+}
+
+table tr:hover {
+  background-color: #e0f2f7 !important;  /* ホバーで薄い水色 */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* より強い影 */
+  transform: translateY(-3px); /* わずかに上に浮き上がる */
+}
+
+/* 日記一覧の「見る」ボタン */
+.view-button {
+    display: block; /* ブロック要素にして縦幅を確保 */
+    padding: 8px 15px;
+    border-radius: 50px; /* 丸いボタンに */
+    background-color: #88ccee; /* 水色のボタン */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+    background-color: #66bbdd;
+}
+
+/* アイコンセルの調整 */
+.table-icon {
+    width: 40px; /* アイコンの幅 */
+    height: 40px; /* アイコンの高さ */
+    border-radius: 50%; /* 丸いアイコン */
+    object-fit: cover; /* 画像がはみ出ないように */
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+a:hover {
+  background-color: rgb(0, 123, 255);
+  color: #fff;
+}
+
+/* 投稿者名ボタンのスタイル（既存を微調整） */
+.poster-button {
+    padding: 8px 15px;
+    border-radius: 20px; /* 角をさらに丸く */
+    font-size: 1em;
+    background-color: #f0f8ff; /* より明るい背景色 */
+    border-color: #b0e0e6; /* 枠線も水色系に */
+    color: #4682b4; /* 文字色も水色系に */
+    transition: all 0.3s ease;
+}
+.poster-button:hover {
+    background-color: #e0ffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+a.poster-button.current-user {
+    background-color: #9370DB; /* 薄いパープル */
+    color: #fff;
+    border-color: #6A1EB2;
+}
+a.poster-button.current-user:hover {
+    background-color: #8A2BE2;
+}
+
+/* ページネーションのスタイル調整 */
+.pagination {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+.pagination a,
+.pagination span.current-page {
+    padding: 10px 18px; /* パディングを調整 */
+    border-radius: 25px; /* 丸いボタンに */
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.pagination a {
+    color: #007bff;
+    background-color: #e9f5ff; /* 薄い青背景 */
+    border-color: #007bff;
+}
+.pagination a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.pagination span.current-page {
+    background-color: #007bff;
+    border-color: #0056b3;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* ← 半透明の白 */
+  z-index: 0; /* 背面に配置 */
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* 前面に配置して操作・表示可能にする */
+  padding: 20px;
+  color: #333; /* 文字が背景に埋もれないように濃くする */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.diary-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+textarea, input[type="text"], input[type="password"] {
+  /* width: 100%; */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ボタンの基本スタイル（aタグのボタンと似たようにする） */
+button[type="submit"], button[type="button"] {
+    display: inline-block;
+    margin-top: 10px;
+    color: #fff; /* ボタンの文字色 */
+    background-color: #007bff; /* ボタンの背景色 */
+    border: 1px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* aタグの場合のみ */
+}
+
+button[type="submit"]:hover, button[type="button"]:hover {
+    background-color: rgb(0, 123, 255);
+    color: #fff;
+}
+
+.flash-effect {
+  animation: flash 1.5s ease-in-out;
+}
+
+@keyframes flash {
+  0%   { background-color: #ffffff; }
+  50%  { background-color: #c8e6c9; } /* 淡い緑 */
+  100% { background-color: transparent; }
+}
+
+.star-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* ユーザー操作に影響しない */
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.star {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  animation: fall 2.5s linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    /* translateY(-10vh) から、もう少し上にも開始位置を広げる */
+    transform: translateY(calc(-10vh - (var(--random-top, 0) * 5vh))); /* --random-topはJSで設定 */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.logout-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #ff9a9e,
+    #fad0c4,
+    #fbc2eb,
+    #a1c4fd,
+    #c2e9fb,
+    #d4fc79,
+    #96e6a1,
+    #ff9a9e
+  );
+  animation: spin 6s linear infinite, fadeOut 3s ease-out 2s forwards;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* フォーム全体のコンテナ */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明の白背景 */
+    padding: 30px;
+    border-radius: 15px; /* 角を丸く */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* 浮き上がる影 */
+    backdrop-filter: blur(5px); /* 背景を少しぼかす（フロストガラス効果） */
+    -webkit-backdrop-filter: blur(5px); /* Safari対応 */
+    margin: 30px;
+    max-width: 500px; /* 最大幅を設定 */
+    text-align: left; /* テキストは左寄せに戻す */
+}
+
+/* 各入力フィールドとラベルの行 */
+.form-group {
+    display: flex; /* Flexboxを使って要素を横に並べる */
+    align-items: center; /* 垂直方向の中央揃え */
+    margin-bottom: 20px; /* 下に余白 */
+}
+
+/* ラベルのスタイル */
+.form-group label {
+    flex-basis: 120px; /* ラベルの固定幅（必要に応じて調整） */
+    margin-right: 20px; /* ラベルと入力ボックスの間に余白 */
+    font-weight: bold;
+    color: #555;
+    white-space: nowrap; /* ラベルが折り返さないように */
+}
+
+/* 入力ボックス（textarea, input[type="text/password"]）のスタイル */
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="file"] { /* ファイル選択も同様にスタイルを適用 */
+    flex-grow: 1; /* 残りのスペースを全て使う */
+    padding: 12px 15px; /* パディングを少し増やす */
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* 角をさらに丸く */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05); /* わずかな内側の影で立体感 */
+    transition: all 0.3s ease; /* ホバー時のアニメーション */
+    background-color: rgba(255, 255, 255, 0.8); /* 入力ボックス自体も半透明に */
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus {
+    border-color: #88ccee; /* フォーカス時に青みがかった枠線 */
+    box-shadow: 0 0 0 3px rgba(136, 204, 238, 0.3); /* フォーカス時に光る影 */
+    outline: none; /* デフォルトのアウトラインを消す */
+}
+
+/* ファイル選択ボタンの見た目を調整 */
+input[type="file"] {
+    padding: 8px 10px; /* パディングを調整 */
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: rgb(0, 123, 255);
+}
+
+/* 送信ボタンのスタイル（既存を微調整） */
+button[type="submit"],
+button[type="button"],
+.button-link {
+    display: inline-block;
+    padding: 12px 25px; /* パディングを増やす */
+    border-radius: 8px; /* 角を丸く */
+    font-size: 18px; /* 文字を大きく */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 25px; /* 上の余白 */
+    margin-right: 15px; /* ボタン間の余白 */
+}
+
+button[type="submit"],
+button[type="button"] {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #0056b3; /* ホバーで少し濃く */
+    border-color: #0056b3;
+}
+.button-link { /* aタグのボタン用 */
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #007bff;
+}
+.button-link:hover {
+    background-color: #e9f5ff; /* ホバーで薄い水色 */
+    color: #007bff;
+}
+
+/* ログイン・新規登録画面のボタン配置 */
+.login-buttons,
+.register-buttons,
+.edit-profile-buttons {
+    display: flex;
+    justify-content: center; /* ボタンを中央寄せ */
+    gap: 15px; /* ボタン間のスペース */
+    margin-top: 30px;
+}
+
+/* プロフィール情報表示のコンテナ */
+.profile-card {
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明の白背景 */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* より強い影 */
+    backdrop-filter: blur(8px); /* 強めのぼかし */
+    -webkit-backdrop-filter: blur(8px);
+    margin: 30px auto;
+    max-width: 600px; /* 少し広めに */
+    text-align: center; /* アイコンを中央に */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* わずかな境界線 */
+}
+
+.profile-icon {
+    width: 120px; /* アイコンサイズ */
+    height: 120px;
+    border-radius: 50%; /* 丸く */
+    object-fit: cover; /* 画像の比率を保つ */
+    border: 5px solid #fff; /* 白い縁取り */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 影 */
+    margin-bottom: 25px; /* 下に余白 */
+}
+
+.profile-info {
+    display: grid; /* グリッドレイアウトで情報を整理 */
+    grid-template-columns: 1fr 2fr; /* 1列目をラベル、2列目を値 */
+    gap: 15px 10px; /* 行と列の隙間 */
+    margin-top: 25px;
+    padding: 0 20px; /* 左右に少しパディング */
+    text-align: left;
+}
+
+.profile-info-label {
+    font-weight: bold;
+    color: #666;
+    text-align: right; /* ラベルを右寄せ */
+}
+
+.profile-info-value {
+    color: #333;
+}
+
+.profile-description {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    line-height: 1.8;
+    color: #444;
+    text-align: left;
+}
+
+/* プロフィール画面のボタン配置 */
+.profile-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* 削除ボタンの警告スタイル */
+.delete-button {
+    background-color: #dc3545; /* 赤色 */
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* ホバーで少し濃く */
+    border-color: #bd2130;
+}
+
+/* フォローリストのスタイル */
+.user-list {
+    list-style: none; /* デフォルトのリストスタイルをなくす */
+    padding: 0;
+    margin-left: 0; margin-right: 0;
+    max-width: 500px; /* フォームコンテナと同じくらいの幅 */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.user-list-item {
+    display: flex; /* Flexboxでアイコンと名前を横並び */
+    align-items: center; /* 垂直方向中央揃え */
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 薄い区切り線 */
+    transition: background-color 0.3s ease;
+}
+
+.user-list-item:last-child {
+    border-bottom: none; /* 最後の要素は下線なし */
+}
+
+.user-list-item:hover {
+    background-color: rgba(240, 248, 255, 0.8); /* ホバーで薄い水色 */
+}
+
+.user-list-item .table-icon { /* table-iconクラスを再利用 */
+    margin-right: 15px;
+    flex-shrink: 0; /* 縮小しない */
+}
+
+.user-list-item a {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #444;
+    text-decoration: none;
+    flex-grow: 1; /* 残りのスペースを埋める */
+    padding: 0; /* button-linkのパディングを上書き */
+    border: none; /* button-linkのボーダーを上書き */
+    background-color: transparent; /* button-linkの背景を上書き */
+}
+
+.user-list-item a:hover {
+    color: #007bff;
+    text-decoration: underline;
+    background-color: transparent; /* ホバー背景も上書き */
+}
+
+/* 例: CSSで幅と高さを調整する場合 */
+.comment-form textarea {
+    width: 100%; /* 親要素の幅に合わせて100%にする */
+    max-width: 600px; /* 最大幅を設定する */
+    height: 20px; /* 高さを固定する */
+    /* または */
+    min-height: 60px; /* 最小の高さを設定 */
+    max-height: 120px; /* 最大の高さを設定 */
+    resize: vertical; /* 縦方向のみユーザーがリサイズできるようにする (noneで不可) */
+    box-sizing: border-box; /* paddingとborderをwidth/heightに含める */
+}

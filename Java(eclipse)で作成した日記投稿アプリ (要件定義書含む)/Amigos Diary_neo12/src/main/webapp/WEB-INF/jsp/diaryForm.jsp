@@ -37,6 +37,7 @@
 .form-group textarea {
     height: 150px;
     resize: vertical;
+    width: 350px;
 }
 .error-message {
     color: red;
@@ -96,29 +97,36 @@
 	<div class="overlay"></div>
  	<div class="content">
 	<h1>新しい日記を投稿</h1>
-	<form action="Main" method="post" enctype="multipart/form-data">
-		<div class="form-group">
-			<label for="title">タイトル：</label> <input type="text" id="title"
-				name="title" size="40" maxlength="20">
-		<div class="form-group">
-			<label for="text">本文：</label>
-			<textarea id="text" name="text" rows="8" cols="40" maxlength="10000"></textarea>
-			<p style="font-size: 0.9em; color: #666; margin-top: 5px;">
+	<div class="form-container">
+		<form action="Main" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="title">タイトル：</label>
+				<input type="text" id="title" name="title" maxlength="20">
+			</div>
+			<div class="form-group">
+				<label for="text">本文：</label>
+				<div>
+					<textarea id="text" name="text" rows="8" maxlength="10000"></textarea>
+					<p style="font-size: 0.9em; color: #666; margin-top: 5px;">
                     YouTube動画を埋め込む場合は、動画の「共有」メニューから「埋め込み」を選び、<br>
                     表示されるコード（&lt;iframe&gt;...&lt;/iframe&gt;）をここに直接貼り付けてください。
                 </p>
-		</div>
-		<div class="form-group">
-			<label for="image">画像（任意）：</label> <input type="file" id="image"
-				name="image" accept="image/*"
-				onchange="previewImage(event, 'mainPreview')"> <img
-				id="mainPreview" src="#" alt="メイン画像プレビュー"
-				style="display: none; max-width: 200px; max-height: 200px;">
-		</div>
-		<button type="submit">投稿</button>
-	</form>
-	<br>
-	<a href="Main">一覧に戻る</a>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="image">画像（任意）：</label>
+				<div>
+					<input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event, 'mainPreview')">
+					<img id="mainPreview" src="#" alt="メイン画像プレビュー"
+						style="display: none; max-width: 200px; max-height: 200px;">
+				</div>
+			</div>
+			<div class="button-group">
+				<button type="submit">投稿</button>
+				<a href="Main" class="button-link">一覧に戻る</a>
+			</div>
+		</form>
+	</div>
   </div>
 </body>
 </html>

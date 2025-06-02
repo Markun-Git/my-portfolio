@@ -28,6 +28,19 @@
         }
     </script>
     <style>
+    
+    table {
+   			border-collapse: separate;
+    		width: 100%; /* ← テーブルの幅が100%なので、そのままでは中央寄せにならない */
+    		margin-top: 20px;
+
+    		/* ★追加または変更する部分★ */
+    		/* テーブルの最大幅を設定し、中央寄せにする */
+    		max-width: 900px; /* 例: 最大幅を900pxに設定（適宜調整してください） */
+    		margin-left: auto;
+    		margin-right: auto;
+		}
+    
         .profile-container {
             margin: 20px auto;
             padding: 20px;
@@ -197,7 +210,7 @@
                     <td><c:out value="${diary.title}" /></td>
                     <td><div class="diary-text-content"><c:out value="${diary.text}" escapeXml="false" /></div></td>
                     <td><c:out value="${diary.createdAt}" /></td>
-                    <td><a href="DiaryDetailServlet?id=${diary.id}">見る</a></td>
+                    <td><a href="DiaryDetailServlet?id=${diary.id}" class="view-button">見る</a></td>
                 </tr>
             </c:forEach>
         </tbody>

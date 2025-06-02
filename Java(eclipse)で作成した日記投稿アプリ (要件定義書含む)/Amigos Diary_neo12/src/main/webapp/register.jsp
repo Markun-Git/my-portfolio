@@ -45,7 +45,8 @@
 		<%
 		} else {
 		%>
-		<form action="RegisterServlet" method="post" enctype="multipart/form-data">
+		<div class="form-container">
+			<form action="RegisterServlet" method="post" enctype="multipart/form-data">
 			<%-- 登録失敗メッセージ表示 --%>
 			<%
 			if (request.getAttribute("registerErrorMsg") != null) {
@@ -54,16 +55,28 @@
 			<%
 			}
 			%>
-			<label>ユーザー名: <input type="text" name="userName" required placeholder="文字列で入力"></label><br>
-    		<label>ログインネーム: <input type="text" name="loginName" required placeholder="英数字で入力"></label><br>
-    		<label>パスワード: <input type="password" name="password" required></label><br>
-    		<label>ひとことメッセージ: <input type="text" name="profileText" maxlength="100"></label><br>
-    		<label>アイコン画像: <input type="file" name="iconImage" accept="image/*" onchange="previewImage(event, 'iconPreview')"></label><br>
-    			<img id="iconPreview" src="#" alt="アイコンプレビュー" style="display: none; max-width: 100px; max-height: 100px; margin-top: 5px;">
-			<button type="submit">登録</button>
-    		<a href="index.jsp" class="button-link">ログイン画面へ戻る</a>
-		</form>
-		<%
+			<div class="form-group"> 					<label for="userName">ユーザー名:</label>
+					<input type="text" id="userName" name="userName" required placeholder="文字列で入力">
+				</div>
+				<div class="form-group"> 					<label for="loginName">ログインネーム:</label>
+					<input type="text" id="loginName" name="loginName" required placeholder="英数字で入力">
+				</div>
+				<div class="form-group"> 					<label for="password">パスワード:</label>
+					<input type="password" id="password" name="password" required>
+				</div>
+				<div class="form-group"> 					<label for="profileText">ひとことメッセージ:</label>
+					<input type="text" id="profileText" name="profileText" maxlength="100">
+				</div>
+				<div class="form-group"> 					<label for="iconImage">アイコン画像:</label>
+					<div> 						<input type="file" id="iconImage" name="iconImage" accept="image/*" onchange="previewImage(event, 'iconPreview')">
+						<img id="iconPreview" src="#" alt="アイコンプレビュー" style="display: none; max-width: 100px; max-height: 100px; margin-top: 5px;">
+					</div>
+				</div>
+				<div class="register-buttons"> 					<button type="submit">登録</button>
+					<a href="index.jsp" class="button-link">ログイン画面へ戻る</a>
+				</div>
+			</form>
+		</div> <%
 		}
 		%>
 	</div>

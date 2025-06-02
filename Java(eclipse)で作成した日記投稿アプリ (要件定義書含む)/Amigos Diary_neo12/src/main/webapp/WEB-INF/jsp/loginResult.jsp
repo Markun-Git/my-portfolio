@@ -27,6 +27,14 @@ String loginErrorDetail = (String) request.getAttribute("loginErrorDetail"); // 
     .button-container a {
         margin-right: 10px;
     }
+    
+    .login-buttons {
+    	display: flex;
+    	justify-content: flex-start; /* これを flex-start に変更 */
+    	gap: 15px;
+    	margin-top: 30px;
+	}
+	
 </style>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
@@ -48,7 +56,7 @@ window.onload = function () {
         <% if (loginUser != null) { %>
             <p>ログインに成功しました</p>
             <p>ようこそ<%=loginUser.getUserName()%>さん</p>
-            <div class="button-container">
+            <div class="login-buttons">
                 <a href="Main" class="button-link">日記投稿・閲覧へ</a>
                 <a href="ProfileServlet" class="button-link">会員情報を確認</a>
             </div>

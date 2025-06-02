@@ -11,35 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 <style>
-/* 既存のスタイルはそのまま */
-table {
-	border-collapse: collapse;
-	width: 600px;
-}
-
-th, td {
-	border: 1px solid #ccc;
-	padding: 8px;
-	text-align: left;
-}
-
-.post-form {
-	margin-bottom: 20px;
-	padding: 15px;
-	border: 1px solid #eee;
-	background-color: #f9f9f9;
-}
-
-.form-group {
-	margin-bottom: 10px;
-}
-
-.form-group label {
-	display: inline-block;
-	width: 80px;
-	text-align: left;
-}
-
 .error-message {
 	color: red;
 	margin-top: 10px;
@@ -48,62 +19,8 @@ th, td {
     color: orange;
     margin-bottom: 10px;
 }
-
-/* ページネーションのスタイル (前回と同じ、そのまま追加) */
-.pagination {
-    margin-top: 20px;
-    text-align: center;
-}
-.pagination a {
-    display: inline-block;
-    padding: 8px 12px;
-    margin: 0 4px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #007bff;
-    background-color: #fff;
-}
-.pagination a:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-.pagination span.current-page {
-    display: inline-block;
-    padding: 8px 12px;
-    margin: 0 4px;
-    border: 1px solid #0056b3;
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: #0056b3;
-    color: #fff;
-    font-weight: bold;
-    cursor: default;
-}
-
-/* 投稿者名のボタンの基本スタイル */
-.poster-button {
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-    color: #333;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    text-align: center;
-    min-width: 60px;
-}
-
-/* ログインユーザーの投稿者名ボタンのスタイル (前回指示のa.poster-button.current-userで) */
-a.poster-button.current-user {
-    background-color: #8A2BE2; /* 紫色 */
-    color: #fff;
-    border-color: #6A1EB2;
-    font-weight: bold;
-}
 </style>
+
 </head>
 <body>
 	<div class="overlay"></div>
@@ -140,23 +57,24 @@ a.poster-button.current-user {
 		<tbody>
 			<c:forEach var="diary" items="${mutterList}">
 				<tr>
-					<td>
+					<td> <%-- アイコン表示 --%>
                         <c:if test="${not empty diary.iconImage}">
-                            <img src="ImageServlet?id=${diary.userId}&type=icon" width="30" height="30"> <%-- ★MutterモデルのuserIdを使用 --%>
+                            <img src="UserImageServlet?id=${diary.userId}" alt="アイコン" class="table-icon"> <%-- ★MutterモデルのuserIdを使用 --%>
                         </c:if>
+                        <c:if test="${empty diary.iconImage}">
+                            <img src="images/default_icon.png" alt="デフォルトアイコン" class="table-icon">
+                       </c:if>
                     </td>
 					<td><c:out value="${diary.title}" /></td>
-					<td>
-						<%-- インラインスタイルを削除し、クラスベースに戻す --%>
-						<c:set var="posterUserName" value="${diary.userName}" /> <%-- MutterモデルのuserNameを直接参照 --%>
-						<c:set var="isCurrentUser" value="${posterUserName eq loginUser.userName}" />
-						<a href="ProfileServlet?userId=${diary.userId}" <%-- ★MutterモデルのuserIdを使用 --%>
+					<td> <%-- 投稿者名ボタン --%>
+						<c:set var="isCurrentUser" value="${diary.userId eq loginUser.userId}" /> <%-- ログインユーザーと投稿者が同じか判定 --%>
+						<a href="ProfileServlet?userId=${diary.userId}"
 						   class="poster-button <c:if test="${isCurrentUser}">current-user</c:if>">
-							<c:out value="${posterUserName}" />
+							<c:out value="${diary.userName}" />
 						</a>
 					</td>
 					<td><c:out value="${diary.createdAt}" /></td>
-					<td><a href="DiaryDetailServlet?id=${diary.id}">見る</a></td> <%-- ★Mutterモデルのidを使用 --%>
+					<td><a href="DiaryDetailServlet?id=${diary.id}" class="view-button">見る</a></td> <%-- ★Mutterモデルのidを使用 --%>
 				</tr>
 			</c:forEach>
 		</tbody>

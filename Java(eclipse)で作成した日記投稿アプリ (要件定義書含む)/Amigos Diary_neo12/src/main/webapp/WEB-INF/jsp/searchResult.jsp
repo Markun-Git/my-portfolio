@@ -10,18 +10,7 @@
 <link rel="stylesheet" href="CSS/style07.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-<style>
-table {
-	border-collapse: collapse;
-	width: 600px; /* 「どこつぶ」のテーブル幅に合わせる */
-}
 
-th, td {
-	border: 1px solid #ccc;
-	padding: 8px;
-	text-align: left;
-}
-</style>
 </head>
 <body>
 	<div class="overlay"></div>
@@ -46,12 +35,12 @@ th, td {
 						<tr>
 							<td><c:if test="${not empty entry.userIconImage}">
 									<img src="ImageServlet?id=${entry.userId}&type=icon" width="30"
-										height="30">
+										height="30" alt="アイコン" class="table-icon">
 								</c:if></td>
 							<td><c:out value="${entry.diaryTitle}" /></td>
 							<td><c:out value="${entry.userName}" /></td>
 							<td><c:out value="${entry.createdAt}" /></td>
-							<td><a href="DiaryDetailServlet?id=${entry.diaryId}">見る</a></td>
+							<td><a href="DiaryDetailServlet?id=${entry.diaryId}" class="view-button">見る</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

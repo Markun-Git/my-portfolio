@@ -18,17 +18,23 @@
 		<% if (request.getAttribute("message") != null) { %>
 			<p class="success-message"><%= request.getAttribute("message") %></p>
 		<% } %>
+		<div class="form-container">
 		<form action="Login" method="post">
 			<%-- ログイン失敗時のエラーメッセージ表示 --%>
 			<% if (request.getAttribute("loginErrorMsg") != null) { %>
 				<p class="error-message"><%= request.getAttribute("loginErrorMsg") %></p>
 			<% } %>
-			<label for="loginName">ログインネーム:</label> <input type="text"
-				id="loginName" name="loginName" placeholder="英数字で入力"><br> <label for="pass">パスワード:</label>
-			<input type="password" id="pass" name="pass"><br>
-			<button type="submit">ログイン</button>
-			<a href="register.jsp" class="button-link">新規登録</a>
-		</form>
-	</div>
+			 <div class="form-container"> <form action="Login" method="post">
+            <div class="form-group"> <label for="loginName">ログインネーム:</label>
+                <input type="text" id="loginName" name="loginName" placeholder="英数字で入力" required>
+            </div>
+            <div class="form-group"> <label for="pass">パスワード:</label>
+                <input type="password" id="pass" name="pass" required>
+            </div>
+            <div class="login-buttons"> <button type="submit">ログイン</button>
+                <a href="register.jsp" class="button-link">新規登録</a>
+            </div>
+        </form>
+    </div> </div>
 </body>
 </html>

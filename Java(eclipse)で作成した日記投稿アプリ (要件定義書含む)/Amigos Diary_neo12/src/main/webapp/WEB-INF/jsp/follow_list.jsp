@@ -13,16 +13,24 @@
 <body>
     <div class="overlay"></div>
     <div class="content">
-        <h1>お気に入りユーザー（フォロー中）</h1>
-        <ul>
-            <c:forEach var="user" items="${followeeUsers}">
-                <li>
+        <h1>フォロー中ユーザー</h1>         <c:if test="${not empty followeeUsers}">
+            <ul class="user-list"> <c:forEach var="user" items="${followeeUsers}">
+            <li class="user-list-item">                     <c:if test="${not empty user.iconImage}">
+                        <img src="UserImageServlet?id=${user.userId}" alt="アイコン" class="table-icon">
+                    </c:if>
+                    <c:if test="${empty user.iconImage}">
+                        <img src="images/default_icon.png" alt="デフォルトアイコン" class="table-icon">                    
+					 </c:if>
                     <a href="ProfileServlet?userId=${user.userId}">
                         <c:out value="${user.userName}" />
                     </a>
                 </li>
             </c:forEach>
         </ul>
+        </c:if>
+        <c:if test="${empty followeeUsers}">
+            <p>フォローしているユーザーはいません。</p>
+        </c:if>
         <a href="Main" class="button-link">日記一覧に戻る</a>
     </div>
 </body>
