@@ -108,8 +108,8 @@
 				<div>
 					<textarea id="text" name="text" rows="8" maxlength="10000"></textarea>
 					<p style="font-size: 0.9em; color: #666; margin-top: 5px;">
-                    YouTube動画を埋め込む場合は、動画の「共有」メニューから「埋め込み」を選び、<br>
-                    表示されるコード（&lt;iframe&gt;...&lt;/iframe&gt;）をここに直接貼り付けてください。
+                    YouTube動画を埋め込む場合は、<br>動画の「共有」メニューから「埋め込み」を選び、<br>
+                    表示されるコード（&lt;iframe&gt;...&lt;/iframe&gt;）を<br>ここに直接貼り付けてください。
                 </p>
 				</div>
 			</div>

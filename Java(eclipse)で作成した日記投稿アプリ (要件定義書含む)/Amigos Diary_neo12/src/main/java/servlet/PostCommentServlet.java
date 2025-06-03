@@ -37,7 +37,7 @@ public class PostCommentServlet extends HttpServlet {
 				request.getRequestDispatcher("DiaryDetailServlet?id=" + diaryId).forward(request, response);
 			}
 		} else {
-			request.setAttribute("commentErrorMsg", "ログインが必要です。またはコメントが入力されていません。");
+			request.setAttribute("commentErrorMsg", "コメントが入力されていません。");
 			request.getRequestDispatcher("DiaryDetailServlet?id=" + diaryId).forward(request, response);
 		}
 	}
